@@ -10,7 +10,7 @@ on:
     branches: [ "**" ]
 
 env:
-  BRANCH_NAME: ${GITHUB_REF##*/}
+  BRANCH_NAME: ${{github.ref}}
 
 jobs:
   build-and-deploy:
