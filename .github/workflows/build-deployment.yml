@@ -11,6 +11,7 @@ on:
 
 env:
   BRANCH_NAME: ${GITHUB_REF##*/}
+  DEPLOY_BRANCH: 'develop'
 
 jobs:
   build-and-deploy:
@@ -32,9 +33,10 @@ jobs:
     - run: npm run build --if-present
     - run: npm test
     - run: echo "BRANCH_NAME= ${{ env.BRANCH_NAME }}"
+    - run: echo "DEPLOY_BRANCH= ${{ env.DEPLOY_BRANCH }}"
     
     - name: Deploy
-      if: "contains('develop', env.BRANCH_NAME)"
+      if: "contains(env.BRANCH_NAME, env.DEPLOY_BRANCH)"
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         folder: build # The folder the action should deploy.
