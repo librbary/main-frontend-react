@@ -11,7 +11,7 @@ on:
 
 env:
   BRANCH_NAME: ${GITHUB_REF##*/}
-  DEPLOY_BRANCH: 'develop'
+  DEPLOY_BRANCH: 'patch-5'
 
 jobs:
   build-and-deploy:
