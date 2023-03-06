@@ -5,11 +5,15 @@ name: Build & Deploy to Github Pages
 
 on:
   push:
-    branches: [ "develop" ]
+    branches: [ "**" ]
+  pull_request:
+    branches: [ "**" ]
+
+env:
+  BRANCH_NAME: ${GITHUB_REF##*/}
 
 jobs:
   build-and-deploy:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -29,6 +33,7 @@ jobs:
     - run: npm test
     
     - name: Deploy
+      if: "contains($BRANCH_NAME, 'develop')"
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         folder: build # The folder the action should deploy.
