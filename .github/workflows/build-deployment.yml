@@ -35,7 +35,7 @@ jobs:
     - run: echo "contains(${{ env.BRANCH_NAME }}, 'develop')"
     
     - name: Deploy
-      if: "contains('${{ env.BRANCH_NAME }}', 'develop')"
+      if: "contains(env.BRANCH_NAME, 'develop')"
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         folder: build # The folder the action should deploy.
