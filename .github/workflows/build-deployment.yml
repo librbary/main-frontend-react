@@ -36,7 +36,7 @@ jobs:
     - run: echo "DEPLOY_BRANCH= ${{ env.DEPLOY_BRANCH }}"
     
     - name: Deploy
-      if: ${{ env.BRANCH_NAME == env.DEPLOY_BRANCH }}"
+      if: env.BRANCH_NAME == env.DEPLOY_BRANCH
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         folder: build # The folder the action should deploy.
