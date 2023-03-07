@@ -1,17 +1,17 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-name: Build & Deploy to Github Pages
+name: Build Frontend application
 
 on:
   push:
+    branch-ignore: [ develop ]
     branches: [ "**" ]
   pull_request:
     branches: [ "**" ]
 
 env:
   BRANCH_NAME: ${GITHUB_REF##*/}
-  DEPLOY_BRANCH: 'develop'
 
 jobs:
   build-and-deploy:
@@ -29,14 +29,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    - run: echo "Build initiated for ${{ env.BRANCH_NAME }}"
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
-    - run: echo "BRANCH_NAME= ${{ env.BRANCH_NAME }}"
-    - run: echo "DEPLOY_BRANCH= ${{ env.DEPLOY_BRANCH }}"
-    
-    - name: Deploy
-      if: "contains(env.BRANCH_NAME, env.DEPLOY_BRANCH)"
-      uses: JamesIves/github-pages-deploy-action@v4
-      with:
-        folder: build # The folder the action should deploy.
