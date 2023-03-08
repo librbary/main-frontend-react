@@ -5,7 +5,7 @@ name: Build & Deploy Frontend application
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ feature/home ]
 
 env:
   BRANCH_NAME: ${GITHUB_REF##*/}
