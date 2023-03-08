@@ -28,7 +28,7 @@ jobs:
         cache: 'npm'
     - run: echo "Build initiated for ${{ env.BRANCH_NAME }}"
     - run: npm ci
-    - run: npm install && npm run build
+    - run: npm run build
     - run: npm test
     
     - name: Deploy
