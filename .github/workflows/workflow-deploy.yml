@@ -5,7 +5,7 @@ name: Build & Deploy Frontend application
 
 on:
   push:
-    branches: [ patch-7 ]
+    branches: [ patch-7yy ]
 
 env:
   BRANCH_NAME: ${GITHUB_REF##*/}
@@ -28,10 +28,11 @@ jobs:
         cache: 'npm'
     - run: echo "Build initiated for ${{ env.BRANCH_NAME }}"
     - run: npm ci
-    - run: npm run build --if-present
+    - run: npm install && npm run build
     - run: npm test
     
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@v4
       with:
+        branch: gh-pages
         folder: build # The folder the action should deploy.
