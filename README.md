@@ -1,8 +1,11 @@
 # liBRBary - frontend service
 [![Build & Deploy Frontend application](https://github.com/librbary/main-frontend-react/actions/workflows/workflow-deploy.yml/badge.svg?branch=develop)](https://github.com/librbary/main-frontend-react/actions/workflows/workflow-deploy.yml)
 
+## liBRBary Application
+> liBRBary Website [GitHub Pages](https://librbary.github.io/main-frontend-react).
+
 ## Local workspace setup guidelines
-* After checking out your feature branch in your local, first install the packages using below command
+* After checking out your feature branch in your local, first install the packages using below command 
 ``` npm install ```
 
 * To run you project in local, use below command
